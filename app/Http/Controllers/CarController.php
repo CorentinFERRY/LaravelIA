@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
-use App\Http\Resources\CarResource;
 use Illuminate\Http\Request;
 
 /**
@@ -126,7 +125,7 @@ class CarController extends Controller
      *     )
      * )
      */
-    public function show(Car $car): CarResource
+    public function show(Car $car)
     {
         $car->load('users');
         return response()->json($car);
@@ -175,7 +174,7 @@ class CarController extends Controller
         $request->validate([
             'make' => 'string',
             'model' => 'string',
-            'year' => 'string',
+            'year' => 'integer',
             'color' => 'string',
             'price' => 'numeric',
         ]);
